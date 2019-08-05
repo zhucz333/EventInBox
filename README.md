@@ -1,0 +1,2 @@
+# EventInBox
+对通用事件队列的封装，同时支持disrutpor和MThread两种模式
