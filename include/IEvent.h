@@ -1,13 +1,15 @@
 //////////////////////////////////////////////////////////////////////////
-///@file	IXLog.h														//
-///@brief	class Log													//
+///@file	IEvent.h													//
+///@brief	class IEvent												//
 ///@author	__ZHUCZ__(zhucz333@163.com)									//
-///@date	2019/04/08													//
+///@date	2019/08/05													//
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include <string>
+
+using EventKey = std::string;
 
 class IEvent
 {
@@ -15,5 +17,6 @@ public:
 	IEvent() = default;
 	virtual ~IEvent() = default;
 
-	virtual std::string GetEventKey() { return "default name"; };
+	virtual EventKey GetEventKey() = 0;
+	virtual std::string ToString() = 0;
 };

@@ -9,11 +9,14 @@
 
 #include <string>
 
+using EventKey = std::string;
+
 class IEvent
 {
 public:
 	IEvent() = default;
 	virtual ~IEvent() = default;
 
-	virtual std::string GetEventKey() = 0;
+	virtual EventKey GetEventKey() = 0;
+	virtual std::string ToString() = 0;
 };

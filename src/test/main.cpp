@@ -10,13 +10,18 @@ public:
 	SubEvent(int a, int b) : m_nA(a), m_nB(b) {};
 	~SubEvent() = default;
 
-	virtual std::string GetEventKey() override
+	std::string GetEventKey() override
 	{
 		return "SUB";
+	}
+	std::string ToString() override
+	{
+		return "m_nA=" + std::to_string(m_nA) + ",m_nb=" + std::to_string(m_nB);
 	}
 
 	int GetA() { return m_nA; }
 	int GetB() { return m_nB; }
+
 private:
 	int m_nA;
 	int m_nB;
@@ -46,7 +51,7 @@ std::shared_ptr<IEventInBox> box_disruptor = IEventInBox::GetInBox();
 void thread_func_thread(int id)
 {
 	std::shared_ptr<IEvent> event = std::make_shared<SubEvent>(1000, 500);
-	for (auto i = 0; i < 100; i++)
+	for (auto i = 0; i < 10000; i++)
 	{
 		box_mthread->Post(event);
 	}
@@ -55,7 +60,7 @@ void thread_func_thread(int id)
 void thread_func_disruptor(int id)
 {
 	std::shared_ptr<IEvent> event = std::make_shared<SubEvent>(2000, 500);
-	for (auto i = 0; i < 100; i++)
+	for (auto i = 0; i < 10000; i++)
 	{
 		box_disruptor->Post(event);
 	}
@@ -73,7 +78,7 @@ int main()
 
 	auto t1 = time(nullptr);
 
-	for (auto i = 0; i < 100; i++)
+	for (auto i = 0; i < 1; i++)
 	{
 		auto t_2 = new std::thread(thread_func_thread, 0);
 		auto t_1 = new std::thread(thread_func_disruptor, 0);
