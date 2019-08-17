@@ -23,7 +23,7 @@ public:
 	virtual bool Init(int thread_num, IEventHandler* handler, EventScheduler scheduler) override;
 	virtual bool Start() override;
 	virtual bool Stop() override;
-	virtual bool Post(std::shared_ptr<IEvent>& event) override;
+	virtual bool Post(const std::shared_ptr<IEvent>& event) override;
 
 private:
 	int														m_nThreadNum;

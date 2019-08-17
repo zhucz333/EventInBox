@@ -16,7 +16,7 @@ public:
 	DisruptorEvent() = default;
 	virtual ~DisruptorEvent() = default;
 
-	void SetEvent(std::shared_ptr<IEvent>& event){ m_ptrEvent = event; };
+	void SetEvent(const std::shared_ptr<IEvent>& event){ m_ptrEvent = event; };
 	std::shared_ptr<IEvent> GetEvent() const { return m_ptrEvent; };
 
 private:

@@ -107,7 +107,7 @@ bool EventInBox::Stop()
 	return true;
 }
 
-bool EventInBox::Post(std::shared_ptr<IEvent>& event)
+bool EventInBox::Post(const std::shared_ptr<IEvent>& event)
 {
 	if (m_eScheduler == SchedulerMThread)
 	{

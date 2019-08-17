@@ -27,5 +27,5 @@ public:
 	virtual bool Init(int thread_num, IEventHandler* handler, EventScheduler scheduler = SchedulerDisruptor) = 0;
 	virtual bool Start() = 0;
 	virtual bool Stop() = 0;
-	virtual bool Post(std::shared_ptr<IEvent>& event) = 0;
+	virtual bool Post(const std::shared_ptr<IEvent>& event) = 0;
 };
